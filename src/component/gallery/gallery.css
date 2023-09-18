@@ -1,0 +1,36 @@
+body {
+    margin: 0
+}
+
+img {
+    width: 320px;
+}
+
+.container {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    gap: 20px;
+    background: teal;
+    padding: 15px;
+}
+.container img {
+    width: 320px;
+    display: block;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    transition: all 100ms ease-out;
+    margin: auto;
+}
+
+.container img:hover {
+    transform: scale(1.04);
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+}
+@media(max-width:400px){
+    .container{
+        display: grid;
+        grid-template-columns: 1fr;
+        place-items: center;
+    }
+}
