@@ -8,24 +8,28 @@ header {
     align-items: center;
     justify-content: space-around;
 }
-h3{
+
+h3 {
     text-align: center;
 }
 
 .button:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.20), 0 6px 20px 0 rgba(0, 0, 0, 0.20);
 }
-.button,link{
+
+.button,
+link {
     text-decoration: none;
 }
 
 
-@media(max-width:400px){
-    header{
+@media(max-width:400px) {
+    header {
         width: 100vw;
         margin: auto;
     }
 }
+
 .button1 {
     color: white;
     background-color: #2d7eff;
@@ -34,6 +38,7 @@ h3{
     border-radius: 50px;
     margin-bottom: 10px;
     min-width: 130px;
+    max-width: 130px;
     text-align: center;
 }
 
@@ -42,4 +47,25 @@ h3{
     background-color: white;
     transform: scale(1.1);
     border: 5px solid #2d7eff;
+}
+
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

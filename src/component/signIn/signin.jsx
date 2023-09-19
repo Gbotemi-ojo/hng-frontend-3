@@ -65,6 +65,7 @@ function Signin() {
                 navigate("/");
             })
         } catch (error) {
+            setisLoading(false);
             console.log(error)
             let error_message = error.response.data
             if (typeof (error_message) === 'object') {
@@ -73,7 +74,6 @@ function Signin() {
             else {
                 setbackendMessage(error_message)
             }
-            setisLoading(false);
         }
     }
     const url = 'https://instagram-api-t4i9.onrender.com/instagram-clone';

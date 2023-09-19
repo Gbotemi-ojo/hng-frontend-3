@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './gallery.css'
 import Header from '../header/header';
+import Header2 from '../header/header2';
 
 const finalSpaceCharacters = [
   {
@@ -99,12 +100,13 @@ function Gallery() {
   const signInPage = () => {
     navigate('/signin');
   }
-  const logout = ()=>{
-    localStorage.clear('token');
-    isSignedIn(false)
-  }
   const url = 'https://instagram-api-t4i9.onrender.com/instagram-clone';
-  const [isSignedIn, setisSignedIn] = useState(false)
+  const [isSignedIn, setisSignedIn] = useState(false);
+  const logout = () => {
+    localStorage.clear('token');
+    setisSignedIn(false);
+    alert('logged out')
+  }
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token === null) {
@@ -118,13 +120,13 @@ function Gallery() {
       setisSignedIn(true)
     }).catch(error => {
       console.log(error);
-      setisSignedIn(false)
+      setisSignedIn(false);
     })
-  }, []);
+  }, [isSignedIn]);
   if (isSignedIn) {
     return (
       <>
-        <Header message = 'Hurray,You are signed In' status = 'Log Out' onClick = {logout}/>
+        <Header2 message='Hurray,You are signed In' status='Log Out' onClick={logout} />
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="characters">
             {(provided) => (
@@ -150,7 +152,7 @@ function Gallery() {
   else {
     return (
       <>
-        <Header message='Welcome user, sign in to use drag and drop feature' status='Sign In' onClick={signInPage} />
+        <Header message='Welcome user, sign in to use drag and drop feature' status='Sign In' location='/signin' />
         <div className='container'>
           {characters.map((item) => {
             return <li key={item.id}>
