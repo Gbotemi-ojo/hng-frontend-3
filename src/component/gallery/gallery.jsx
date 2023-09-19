@@ -10,17 +10,20 @@ const finalSpaceCharacters = [
   {
     id: 'one',
     thumb: 'https://source.unsplash.com/1300x1200/?algeria',
-    name: 'algeria'
+    name: 'algeria',
+    loaded : false
   },
   {
     id: 'two',
     thumb: 'https://source.unsplash.com/1300x1200/?lebanon',
-    name: 'lebanon'
+    name: 'lebanon',
+    loaded: false
   },
   {
     id: 'three',
     thumb: 'https://source.unsplash.com/1300x1200/?qatar',
-    name: 'qatar'
+    name: 'qatar',
+    loaded: false
   },
   {
     id: 'four',
@@ -30,63 +33,74 @@ const finalSpaceCharacters = [
   {
     id: 'five',
     thumb: 'https://source.unsplash.com/1300x1200/?kuwait',
-    name: 'kuwait'
+    name: 'kuwait',
+    loaded: false
   },
   {
     id: 'six',
     thumb: 'https://source.unsplash.com/1300x1200/?oman',
-    name: 'oman'
+    name: 'oman',
+    loaded: false
   },
   {
     id: 'seven',
     thumb: 'https://source.unsplash.com/1300x1200/?turkey',
-    name: 'turkey'
+    name: 'turkey',
+    loaded: false
   },
   {
     id: 'eight',
     thumb: 'https://source.unsplash.com/1300x1200/?iran',
-    name: 'iran'
+    name: 'iran',
+    loaded: false
   },
   {
     id: 'nine',
     thumb: 'https://source.unsplash.com/1300x1200/?jordan',
-    name: 'jordan'
+    name: 'jordan',
+    loaded: false
   },
   {
     id: 'ten',
     thumb: 'https://source.unsplash.com/1300x1200/?Kuwait',
-    name: 'kuwait'
+    name: 'kuwait',
+    loaded: false
   },
   {
     id: 'eleven',
     thumb: 'https://source.unsplash.com/1300x1200/?usa',
-    name: 'usa'
+    name: 'usa',
+    loaded: false
   },
   {
     id: 'twelve',
     thumb: 'https://source.unsplash.com/1300x1200/?japan',
-    name: 'japan'
+    name: 'japan',
+    loaded: false
   },
   {
     id: 'thirteen',
     thumb: 'https://source.unsplash.com/1300x1200/?canada',
-    name: 'canada'
+    name: 'canada',
+    loaded: false
   },
   {
     id: 'fourteen',
     thumb: 'https://source.unsplash.com/1300x1200/?nigeria',
-    name: 'nigeria'
+    name: 'nigeria',
+    loaded: false
   },
   {
     id: 'fifteen',
     thumb: 'https://source.unsplash.com/1300x1200/?singapore',
-    name: 'singapore'
+    name: 'singapore',
+    loaded: false
   }
 ]
 
 function Gallery() {
   const [characters, updateCharacters] = useState(finalSpaceCharacters);
-
+  const [search, setSearch] = useState('');
   function handleOnDragEnd(result) {
     if (!result.destination) return;
 
@@ -96,10 +110,18 @@ function Gallery() {
 
     updateCharacters(items);
   }
-  let navigate = useNavigate();
-  const signInPage = () => {
-    navigate('/signin');
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
   }
+  useEffect(() => {
+    const filteredData = finalSpaceCharacters.filter((item) => {
+      const itemName = item.name.toLowerCase();
+      const query = search.toLowerCase();
+      return itemName.includes(query);
+    });
+    updateCharacters(filteredData);
+  }, [search]);
+  
   const url = 'https://instagram-api-t4i9.onrender.com/instagram-clone';
   const [isSignedIn, setisSignedIn] = useState(false);
   const logout = () => {
@@ -127,6 +149,7 @@ function Gallery() {
     return (
       <>
         <Header2 message='Hurray,You are signed In' status='Log Out' onClick={logout} />
+        <div className="block"><input type="text" className="input-res" placeholder='search for image' onChange={handleSearch} value={search} /></div>
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="characters">
             {(provided) => (
@@ -137,6 +160,7 @@ function Gallery() {
                       {(provided) => (
                         <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                           <img src={thumb} alt={`${name} Thumb`} />
+                          <div className='image_name'>{name}</div>
                         </li>
                       )}
                     </Draggable>
@@ -153,6 +177,7 @@ function Gallery() {
     return (
       <>
         <Header message='Welcome user, sign in to use drag and drop feature' status='Sign In' location='/signin' />
+        <div className="block"><input type="text" className="input-res" placeholder='search for image' onChange={handleSearch} value={search} /></div>
         <div className='container'>
           {characters.map((item) => {
             return <li key={item.id}>
