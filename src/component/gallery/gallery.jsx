@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './gallery.css'
 import Header from '../header/header';
