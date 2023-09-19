@@ -11,19 +11,16 @@ const finalSpaceCharacters = [
     id: 'one',
     thumb: 'https://source.unsplash.com/1300x1200/?algeria',
     name: 'algeria',
-    loaded : false
   },
   {
     id: 'two',
     thumb: 'https://source.unsplash.com/1300x1200/?lebanon',
-    name: 'lebanon',
-    loaded: false
+    name: 'lebanon'
   },
   {
     id: 'three',
     thumb: 'https://source.unsplash.com/1300x1200/?qatar',
-    name: 'qatar',
-    loaded: false
+    name: 'qatar'
   },
   {
     id: 'four',
@@ -33,68 +30,57 @@ const finalSpaceCharacters = [
   {
     id: 'five',
     thumb: 'https://source.unsplash.com/1300x1200/?kuwait',
-    name: 'kuwait',
-    loaded: false
+    name: 'kuwait'
   },
   {
     id: 'six',
     thumb: 'https://source.unsplash.com/1300x1200/?oman',
-    name: 'oman',
-    loaded: false
+    name: 'oman'
   },
   {
     id: 'seven',
     thumb: 'https://source.unsplash.com/1300x1200/?turkey',
-    name: 'turkey',
-    loaded: false
+    name: 'turkey'
   },
   {
     id: 'eight',
     thumb: 'https://source.unsplash.com/1300x1200/?iran',
-    name: 'iran',
-    loaded: false
+    name: 'iran'
   },
   {
     id: 'nine',
     thumb: 'https://source.unsplash.com/1300x1200/?jordan',
-    name: 'jordan',
-    loaded: false
+    name: 'jordan'
   },
   {
     id: 'ten',
     thumb: 'https://source.unsplash.com/1300x1200/?Kuwait',
-    name: 'kuwait',
-    loaded: false
+    name: 'kuwait'
   },
   {
     id: 'eleven',
     thumb: 'https://source.unsplash.com/1300x1200/?usa',
-    name: 'usa',
-    loaded: false
+    name: 'usa'
   },
   {
     id: 'twelve',
     thumb: 'https://source.unsplash.com/1300x1200/?japan',
-    name: 'japan',
-    loaded: false
+    name: 'japan'
   },
   {
     id: 'thirteen',
     thumb: 'https://source.unsplash.com/1300x1200/?canada',
-    name: 'canada',
-    loaded: false
+    name: 'canada'
   },
   {
     id: 'fourteen',
     thumb: 'https://source.unsplash.com/1300x1200/?nigeria',
-    name: 'nigeria',
-    loaded: false
+    name: 'nigeria'
   },
   {
     id: 'fifteen',
     thumb: 'https://source.unsplash.com/1300x1200/?singapore',
-    name: 'singapore',
-    loaded: false
+    name: 'singapore'
   }
 ]
 
@@ -120,7 +106,7 @@ function Gallery() {
       return itemName.includes(query);
     });
     updateCharacters(filteredData);
-  }, [search]);
+  }, [search])
   
   const url = 'https://instagram-api-t4i9.onrender.com/instagram-clone';
   const [isSignedIn, setisSignedIn] = useState(false);
