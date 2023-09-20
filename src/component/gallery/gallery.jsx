@@ -167,6 +167,7 @@ function Gallery() {
           {characters.map((item) => {
             return <li key={item.id}>
               <img src={item.thumb} alt={`${item.name} Thumb`} />
+              <div className='image_name'>{name}</div>
             </li>
           })}
         </div>
