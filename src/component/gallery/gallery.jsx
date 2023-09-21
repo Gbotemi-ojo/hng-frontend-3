@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import axios from 'axios';
-import './gallery.css'
+import './gallery.css';
 import Header from '../header/header';
 import Header2 from '../header/header2';
 
@@ -136,7 +136,7 @@ function Gallery() {
         <Header2 message='Hurray,You are signed In' status='Log Out' onClick={logout} />
         <div className="block"><input type="text" className="input-res" placeholder='search for image' onChange={handleSearch} value={search} /></div>
         <DragDropContext onDragEnd={handleOnDragEnd}>
-          <Droppable droppableId="characters">
+          <Droppable droppableId="characters" direction='both'>
             {(provided) => (
               <div className="container" {...provided.droppableProps} ref={provided.innerRef}>
                 {characters.map(({ id, name, thumb }, index) => {
