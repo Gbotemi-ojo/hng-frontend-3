@@ -13,12 +13,13 @@ img {
     gap: 20px;
     /* background: teal; */
     padding: 15px;
-    background-color: green;
+    background-color: rgb(173, 246, 173,0.3);
+    background-color: black;
 }
 .container img {
     width: 320px;
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
+    /* filter: grayscale(1); */
+    border-radius: 25px;
     transition: all 100ms ease-out;
     margin: auto;
 }
